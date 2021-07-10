@@ -1,7 +1,7 @@
 <template>
   <div class="maintenance-header">
     <img class="maintenance-bg1" src="/services/maintenance1-web.png" />
-    <!-- <img class="maintenance-bg2" src="/services/maintenance2.png" /> -->
+    <img class="maintenance-bg2" src="/services/maintenance2.png" />
     <div class="content">
       <h4>Website Maintenance</h4>
       <div class="content-group">
@@ -45,12 +45,14 @@
 .maintenance-header {
   position: relative;
   margin-top: 102px;
+  padding-bottom: 150px;
   .maintenance-bg1 {
     position: absolute;
   }
   .maintenance-bg2 {
     position: absolute;
     bottom: 0;
+    z-index: -1;
     width: 100%;
   }
   .content {

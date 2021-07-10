@@ -78,13 +78,12 @@ export default {
 
 <style lang="scss" scoped>
 .who-we-are {
-  margin-top: 150px;
   .top-bg {
     background: #f3fbff 0% 0% no-repeat padding-box;
     .content {
       max-width: 1152px;
       margin: auto;
-      padding: 60px 7.5% 170px;
+      padding: 60px 75px 170px;
       text-align: center;
       .h3-border-bottom {
         width: 40px;
