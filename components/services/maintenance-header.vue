@@ -63,10 +63,17 @@
       padding: 90px 47px 45px;
       color: var(--acc-pink-color);
     }
+    @screen md {
+      padding: 0 5%;
+    }
     .content-group {
       display: flex;
+      flex-wrap: wrap;
       .left-group {
         width: 50%;
+        @screen sm {
+          width: 100%;
+        }
         h3 {
           font-weight: 300;
           color: #6f6c7f;
@@ -104,6 +111,9 @@
         flex-direction: column;
         gap: 40px;
         padding-left: 15%;
+        @screen sm {
+          width: 100%;
+        }
         .msg-box {
           background: white;
           box-shadow: 2px 2px 24px #bcbcbc45;

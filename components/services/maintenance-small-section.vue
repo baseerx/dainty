@@ -2,16 +2,28 @@
   <div class="small-section">
     <img src="/services/small-section.png" class="bg-img" />
     <div class="content">
-      <h5 class="text">
-        Our developers are available 24/7 to fix any small jobs,<br />
-        on the same day, from $79 /month.
-      </h5>
+      <h5 class="text" v-html="text"></h5>
       <div class="button-cover">
-        <nuxt-link to="/">Sign up today</nuxt-link>
+        <nuxt-link to="/">{{ btnText }}</nuxt-link>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    text: {
+      type: String,
+      default: () => "",
+    },
+    btnText: {
+      type: String,
+      default: () => "",
+    },
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .small-section {
@@ -34,6 +46,7 @@
     .text {
       color: #fff;
       line-height: 35px;
+      width: 50%;
     }
     .button-cover {
       a {
