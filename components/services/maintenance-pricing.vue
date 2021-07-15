@@ -26,8 +26,23 @@
             <div :class="`switch-button ${showMonthlyPrice ? '' : 'right'}`"></div>
           </div>
           <img class="right-curve" src="/services/right-curve.png" />
+          <div class="switch-text">Switch to yearly to get 10% OFF on all plans</div>
         </div>
-        <div class="price-cards">H</div>
+        <div class="price-cards">
+          <div class="price-card" v-for="price in prices.monthly" :key="price.name">
+            <h4>{{ price.name }}</h4>
+            <div class="underline"></div>
+            <span class="price"
+              >$
+              <h2>{{ price.price }}</h2></span
+            >
+            <div class="price-text">USD per month</div>
+            <div class="price-info-text">Minimum 3 months signup</div>
+            <div class="button-cover">
+              <nuxt-link to="/">Sign up today</nuxt-link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -37,16 +52,24 @@
 export default {
   data: () => ({
     showMonthlyPrice: true,
+    prices: {
+      monthly: [
+        { name: "Standard", price: "79" },
+        { name: "Professional", price: "99" },
+        { name: "VIP", price: "199" },
+      ],
+    },
   }),
 }
 </script>
 
 <style lang="scss" scoped>
 .how-it-works {
+  @apply my-16;
   .content {
     max-width: 1152px;
     margin: auto;
-    padding: 60px 75px 60px;
+    // padding: 60px 75px 60px;
     text-align: center;
     .h3-border-bottom {
       width: 40px;
@@ -60,8 +83,10 @@ export default {
       display: flex;
       flex-wrap: wrap;
       background: #f3fbff;
+      @apply my-8;
       .switch-card {
-        flex-grow: 1;
+        max-width: 30%;
+        padding: 70px;
         .switch {
           background: #ffffff 0% 0% no-repeat padding-box;
           box-shadow: 0px 3px 24px #0000001c;
@@ -70,6 +95,7 @@ export default {
           border-radius: 34px;
           position: relative;
           height: 68px;
+          box-shadow: 0px 3px 24px #0000001c;
           width: 212px;
           .switch-button {
             position: absolute;
@@ -110,10 +136,86 @@ export default {
         }
         .right-curve {
           margin-left: auto;
+          margin-top: 12px;
+        }
+        .switch-text {
+          font-size: 14px;
+          color: #36324a;
+          text-align: center;
         }
       }
       .price-cards {
-        flex-grow: 2;
+        width: 70%;
+        display: flex;
+        .price-card {
+          width: 33%;
+          padding: 24px;
+          text-align: left;
+          .underline {
+            width: 20px;
+            border: 2px solid #5b39c9;
+          }
+          .price {
+            display: flex;
+            color: var(--acc-purple-color);
+            @apply my-3;
+            gap: 8px;
+            h2 {
+              color: var(--acc-purple-color);
+              margin-top: -5px;
+            }
+          }
+          .price-text {
+            color: #36324a;
+            font-size: 14px;
+            @apply my-3;
+          }
+          .price-info-text {
+            color: #6f6c7f;
+            font-size: 14px;
+            @apply my-3;
+          }
+          .button-cover {
+            width: 100%;
+            @apply py-4;
+            a {
+              display: block;
+              text-align: center;
+              width: 100%;
+              background: var(--acc-purple-color);
+              border-radius: 8px;
+              color: white;
+              @apply p-2;
+              &:hover {
+                background: var(--acc-pink-color);
+                color: white;
+              }
+            }
+          }
+        }
+        .price-card:nth-child(2) {
+          background: var(--acc-purple-color);
+          h4 {
+            color: white;
+          }
+          .underline {
+            border: 2px solid white;
+          }
+          .price {
+            color: white;
+            h2 {
+              color: white;
+            }
+          }
+          .price-info-text,
+          .price-text {
+            color: white;
+          }
+          a {
+            background: white;
+            color: var(--acc-purple-color);
+          }
+        }
       }
     }
   }
