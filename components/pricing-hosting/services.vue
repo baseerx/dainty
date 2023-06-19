@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="{ type, isOffered, serviceId } in services.slice(0, 7)" :key="serviceId">
+      <li v-for="{ type, isOffered, serviceId } in services.slice(0, 9)" :key="serviceId">
         <check-icon v-if="isOffered" />
         <cross-icon v-else />
         <span>{{ type }}</span>

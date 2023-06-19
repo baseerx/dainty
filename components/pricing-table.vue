@@ -5,30 +5,25 @@
       <p>Compare our plans and select the best for your business</p>
     </div>
 
-    <table v-for="{ category, id, services } in pricingTable" :key="id">
+    <table>
       <thead>
         <tr>
-          <th class="pricing-features_table-row-heading">{{ category }}</th>
-          <th
-            v-for="(heading, index) in headings"
-            :key="index"
-            class="pricing-features_table-column-heading"
-          >
-            {{ heading }}
-          </th>
+          <th class="pricing-features_table-row-heading"></th>
+          <th class="pricing-features_table-row-heading">Core</th>
+          <th class="pricing-features_table-row-heading">Plus</th>
+          <th class="pricing-features_table-row-heading">Enterprise</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="{ service, serviceId, availability } in services" :key="serviceId">
-          <th class="pricing-features_table-row-sub-heading">{{ service }}</th>
-          <td
-            v-for="(value, index) in availability"
-            :key="index"
-            class="pricing-features_table-cell"
-          >
-            <span v-if="value === 'Available'"><check-icon /> </span>
-            <span v-else> {{ value }}</span>
-          </td>
+        <tr v-for="{ id, service, option1, option2, option3 } in pricingTable" :key="id">
+          <td class="pricing-features_table-cell">{{ service }}</td>
+
+          <td class="pricing-features_table-cell" v-if="option1 === true"><check-icon /></td>
+          <td v-else>{{ option1 ? option1 : null }}</td>
+          <td class="pricing-features_table-cell" v-if="option2 === true"><check-icon /></td>
+          <td v-else>{{ option2 ? option2 : null }}</td>
+          <td class="pricing-features_table-cell" v-if="option3 === true"><check-icon /></td>
+          <td v-else>{{ option3 ? option3 : null }}</td>
         </tr>
       </tbody>
     </table>
@@ -36,7 +31,7 @@
 </template>
 
 <script>
-import pricingTable from "../static/data/pricing-table-content.json"
+import pricingTable from "../static/data/pricing-table-content-new.json"
 import checkIcon from "./home/plans/check-icon.vue"
 export default {
   components: { checkIcon },
@@ -90,6 +85,7 @@ th {
   top: 90px;
   z-index: 3;
   font-size: 20px;
+  text-align: left;
   line-height: 75px;
   @apply text-darkColor;
   background: #fff;
@@ -158,7 +154,7 @@ th {
 
 .pricing-features_table-cell {
   padding: 18px 0;
-  text-align: center;
+  text-align: rig;
   @apply text-lightColor;
   @apply text-base;
 
